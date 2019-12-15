@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Csharp_T2
 {
-    class GuestRequest
+    public class GuestRequest
     {
-        public
-        DateTime EntryDate;
-        DateTime ReleaseDate;
-        bool IsApproved;
+   
+        public DateTime ReleaseDate;
+        public DateTime EntryDate;
+        public bool IsApproved;
         public override string ToString()
         {
             return EntryDate.ToString("DD/MM/YY") + " " + ReleaseDate.ToString("DD/MM/YY");
         }
 
+
     }
+
 }
