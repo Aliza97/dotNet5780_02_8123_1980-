@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Csharp_T2
 {
-    class HostingUnit : IComparable
+    public class HostingUnit : IComparable
     {
         private static int stSerialKey;
         public long HostingUnitKey;
-        bool[,] Diary = new bool[12, 31];
+        public bool[,] Diary = new bool[12, 31];
         public override string ToString()// print the unit number and the dates of beginning and ending of the reservation
         {
             string output = "Unit Number:" + stSerialKey + "Dates:";
-            int helpI = 0 ,helpJ = 0;
+            int helpI = 0, helpJ = 0;
             for (int i = 0; i < 12; i++)
                 for (int j = 0; j < 31; j++)
                 {
@@ -26,7 +26,7 @@ namespace Csharp_T2
                         output += i + 1 + "/" + j + 1 + "/2020-";
                     }
 
-                    if (Diary[i, j]== true &&  Diary[i - 1, 30]== false && j == 0)
+                    if (Diary[i, j] == true && Diary[i - 1, 30] == false && j == 0)
                     {
                         output += i + 1 + "/" + j + 1 + "/2020-";
                     }
@@ -50,7 +50,7 @@ namespace Csharp_T2
                     {
                         output += 11 + "/" + 30 + "/2020";
                     }
-                    
+
                 }
             return output;
         }
@@ -68,12 +68,12 @@ namespace Csharp_T2
                     else
                         return guestReq.IsApproved = false;
                 }
-            
+
             else
                 for (int i = guestReq.EntryDate.Month; i < guestReq.ReleaseDate.Month; i++)
-                    for (int j = guestReq.EntryDate.Day; j < guestReq.ReleaseDate.Day-1; j++)
+                    for (int j = guestReq.EntryDate.Day; j < guestReq.ReleaseDate.Day - 1; j++)
                     {
-                        if (Diary[i,j] == false)
+                        if (Diary[i, j] == false)
                             return guestReq.IsApproved = true;
                         else
                             return guestReq.IsApproved = false;
@@ -82,28 +82,28 @@ namespace Csharp_T2
             return guestReq.IsApproved;
         }
 
-        
+
         public int GetAnnualBusyDays() // return all days taken in the year
         {
             int count = 0;
             for (int i = 0; i < 12; i++)
                 for (int j = 0; j < 31; j++)
-                    if (Diary[i, j] == false)
+                    if (Diary[i, j] == true)
                         count++;
             return count;
-        } 
+        }
 
         public float GetAnnualBusyPercentage()// print the pourcentage of taken days in year
         {
             int count = 0;
             for (int i = 0; i < 12; i++)
                 for (int j = 0; j < 31; j++)
-                    if (Diary[i, j] == false)
+                    if (Diary[i, j] == true)
                         count++;
-            float x = count*365/100;
+            float x = count * 365 / 100;
             return x;
 
-        } 
+        }
         int IComparable.CompareTo(object obj)
         {
             HostingUnit help = obj as HostingUnit;
@@ -116,7 +116,9 @@ namespace Csharp_T2
                 for (int j = 0; j < 31; j++)
                     Diary[i, j] = false;
         }
-            
+
 
     }
 }
+
+

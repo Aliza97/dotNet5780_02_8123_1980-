@@ -1,0 +1,2 @@
+Z:\csharp T2\Csharp T2\Csharp T2\obj\Debug\Csharp T2.csprojAssemblyReference.cache
+Z:\csharp T2\Csharp T2\Csharp T2\obj\Debug\Csharp T2.csproj.CoreCompileInputs.cache
